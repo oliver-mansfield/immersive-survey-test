@@ -1,0 +1,47 @@
+{
+	"title": "Customer Satisfaction Survey",
+	"questions": [
+		{
+			"type": "text",
+			"label": "What is your name?",
+			"name": "name",
+			"validation": {
+				"required": true,
+				"minLength": 3
+			}
+		},
+		{
+			"type": "multiple_choice",
+			"label": "How did you hear about us?",
+			"name": "referal",
+			"options": ["Friends", "Online Ad", "Social Media", "Other"],
+			"validation": {
+				"required": true
+			}
+		},
+		{
+			"type": "rating",
+			"label": "Rate our service",
+			"name": "rating",
+			"scale": 5,
+			"validation": {
+				"required": true,
+				"minChoices": 1
+			}
+		},
+		{
+			"type": "yes_no",
+			"label": "Would you recommend us to a friend?",
+			"name": "recommend",
+			"validation": {
+				"required": true
+			}
+		},
+
+		{
+			"type": "textarea",
+			"label": "Any additional feedback?",
+			"name": "feedback"
+		}
+	]
+}
