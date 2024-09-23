@@ -1,0 +1,38 @@
+{
+	"title": "Request Callback",
+	"questions": [
+		{
+			"type": "text",
+			"label": "What is your name?",
+			"name": "name",
+			"validation": {
+				"required": true,
+				"minLength": 3
+			}
+		},
+		{
+			"type": "multiple_choice",
+			"label": "What time of day is best for us to call you?",
+			"name": "callback_time",
+			"options": ["Morning", "Afternoon", "Evening"],
+			"validation": {
+				"required": true,
+				"minChoices": 1
+			}
+		},
+		{
+			"type": "yes_no",
+			"label": "Have you decided on a product to purchase?",
+			"name": "product_decision",
+			"validation": {
+				"required": true
+			}
+		},
+
+		{
+			"type": "textarea",
+			"label": "Any additional feedback?",
+			"name": "feedback"
+		}
+	]
+}

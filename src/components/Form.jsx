@@ -1,4 +1,5 @@
-import data from "../data.json";
+import customerSatisfactionForm from "../form-data/customerSatisfactionForm.json";
+import requestCallbackForm from "../form-data/requestCallbackForm.json";
 import TextQuestion from "./TextQuestion";
 import MultipleChoiceQuestion from "./MultipleChoiceQuestion";
 import RatingQuestion from "./RatingQuestion";
@@ -11,9 +12,22 @@ export default function Form() {
 	const [showSummary, setShowSummary] = useState(false);
 
 	useEffect(() => {
-		setAnswers(generateInitialAnswers(data));
-		setQuestions(generateQuestions(data));
+		setAnswers(generateInitialAnswers(customerSatisfactionForm));
+		setQuestions(generateQuestions(customerSatisfactionForm));
 	}, []);
+
+	//Create an object which is the questions from the JSON, plus a showError property.
+	//showError is passed to the child components, and is used to show/hide error messages.
+	const generateQuestions = (data) => {
+		return {
+			// ...data,
+			title: data.title,
+			questions: data.questions.map((question) => ({
+				...question,
+				showError: null,
+			})),
+		};
+	};
 
 	//Create an array of answers based off the questions in the JSON.
 	const generateInitialAnswers = (data) => {
@@ -29,17 +43,12 @@ export default function Form() {
 		});
 	};
 
-	//Create an object which is the questions from the JSON, plus a showError property.
-	//showError is passed to the child components, and is used to show/hide error messages.
-	const generateQuestions = (data) => {
-		return {
-			// ...data,
-			title: data.title,
-			questions: data.questions.map((question) => ({
-				...question,
-				showError: null,
-			})),
-		};
+	//Switch the JSON file
+	//Needs work but shows the form will render different JSON files.
+	const handleChangeToRequestCallback = () => {
+		setAnswers(generateInitialAnswers(requestCallbackForm));
+		setQuestions(generateQuestions(requestCallbackForm));
+		setShowSummary(false);
 	};
 
 	//When the child components send their input and validation to the parent,
@@ -176,6 +185,12 @@ export default function Form() {
 
 	return (
 		<>
+			<button
+				onClick={handleChangeToRequestCallback}
+				className="bg-gray-400 w-auto mb-8"
+			>
+				Switch JSON file
+			</button>
 			<form onSubmit={handleSubmit}>
 				<h1>{questions.title}</h1>
 				{renderQuestions()}

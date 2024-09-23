@@ -29,12 +29,14 @@ export default function Summary({answers}) {
 	};
 
 	return (
-		<div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-red-300">
-			<div className="border border-black p-16">
+		<div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-green-200">
+			<div className="border border-black p-16 bg-white">
 				<h2>Your Answers</h2>
 				{renderAnswers()}
 
-				<button onClick={fakeAPICall}>Submit</button>
+				<button onClick={fakeAPICall} className="mt-4">
+					Submit
+				</button>
 			</div>
 		</div>
 	);
